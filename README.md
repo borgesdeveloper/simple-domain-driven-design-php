@@ -1,2 +1,2 @@
 # PHP-Drive-Domain-Design
-Basic infrastructure for PHP using drive domain design.
+Basic infrastructure using PHP and Drive Domain Design
