@@ -1,5 +1,7 @@
 <?php
+
 namespace Services\Auth;
+
 use \Firebase\JWT\JWT;
 use Domain\Services\Auth\IAuthService;
 use Domain\Services\Users\IUserService;

@@ -1,11 +1,11 @@
 {
     "autoload": {
         "psr-4": {
+            "Domain\\Services\\Auth\\": "Domain/Services/Auth",
             "Users\\": "Domain/aggregates/Users",
             "Services\\Auth\\": "Application/Services/Auth",
             "Services\\Users\\":"Application/Services/Users",
-            "Domain\\Services\\Users\\":"Domain/Services/Users",
-            "Domain\\Services\\Auth\\": "Domain/Services/Auth"
+            "Domain\\Services\\Users\\":"Domain/Services/Users"
         }
     },
     "require": {

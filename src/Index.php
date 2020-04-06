@@ -5,9 +5,9 @@ class Init{
     function get(){}
 
     function resolve(){
-        $container = Viloveul\Container\ContainerFactory::instance();
-        $container->set(Domain\Services\Auth\IUserService::class, Services\Auth\AuthService::class);
-        $result = $container->make(Services\Auth\AuthService::class);
+         $container = Viloveul\Container\ContainerFactory::instance();
+         $container->set(Domain\Services\Auth\IUserService::class, Services\Auth\AuthService::class);
+         $result = $container->make(Services\Auth\AuthService::class);
     }
 
     public function Run() : void
