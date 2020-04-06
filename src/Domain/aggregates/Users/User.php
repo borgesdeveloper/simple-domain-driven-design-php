@@ -1,10 +1,7 @@
 <?php
-
 namespace Users;
-
-class User implements UserBase
+class User
 {
-    
     public int $Id;
     public string $Name;
 

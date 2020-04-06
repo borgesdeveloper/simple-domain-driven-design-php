@@ -2,12 +2,15 @@
     "autoload": {
         "psr-4": {
             "Users\\": "Domain/aggregates/Users",
+            "Services\\Auth\\": "Application/Services/Auth",
             "Services\\Users\\":"Application/Services/Users",
-            "Domain\\Services\\Users\\":"Domain/Services/Users"
+            "Domain\\Services\\Users\\":"Domain/Services/Users",
+            "Domain\\Services\\Auth\\": "Domain/Services/Auth"
         }
     },
     "require": {
-        "nikic/fast-route": "^1.3",
-        "php-di/php-di": "^6.0"
+        "torophp/torophp": "dev-master",
+        "kreait/firebase-php": "^4.17.0",
+        "firebase/php-jwt": "^5.2"
     }
 }

@@ -1,51 +1,33 @@
-<?php 
-
-require_once('vendor/autoload.php');
+<?php require_once('vendor/autoload.php');
 
 class Init{
+    function __construct(){}
+    function get(){}
 
-    function __construct()
-    {
-    
+    function resolve(){
+        $container = Viloveul\Container\ContainerFactory::instance();
+        $container->set(Domain\Services\Auth\IUserService::class, Services\Auth\AuthService::class);
+        $result = $container->make(Services\Auth\AuthService::class);
     }
-   
+
     public function Run() : void
     {
+        Toro::serve(array(
+            "/" => "Init",
+            "/auth" => "Services\Auth\AuthService"
+        ));
 
-        $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) 
-        {
-            $r->addRoute('GET', '/users', 'get_all_users_handler');
-            $r->addRoute('GET', '/user/{id:\d+}', 'get_user_handler');
-            $r->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'get_article_handler');
-        });
+        ToroHook::add("before_request", function() {});
+        ToroHook::add("before_handler", function() {});
+        ToroHook::add("after_handler", function() {});
+        ToroHook::add("after_request",  function() {});
 
-        var_dump($dispatcher);
-        
-        $httpMethod = $_SERVER['REQUEST_METHOD'];
-        $uri = $_SERVER['REQUEST_URI'];
-        
-        if (false !== $pos = strpos($uri, '?')) {
-            $uri = substr($uri, 0, $pos);
-        }
-
-        $uri = rawurldecode($uri);
-        
-        $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
-        switch ($routeInfo[0]) {
-            case FastRoute\Dispatcher::NOT_FOUND:
-                break;
-            case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
-                $allowedMethods = $routeInfo[1];
-                break;
-            case FastRoute\Dispatcher::FOUND:
-                $handler = $routeInfo[1];
-                $vars = $routeInfo[2];
-                break;
-        }
+        $this->resolve();
     }
 
 }
 
     $init = new Init();
     $init->Run();
+    
 ?>
